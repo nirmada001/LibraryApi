@@ -26,19 +26,7 @@ namespace LibraryApi.Controllers
             return Ok(books);
         }
 
-        //Get a book by its ID
-        [HttpGet("{id}")]
-        public IActionResult GetBookById(int id)
-        {
-            var book = _context.Books.Find(id);
-
-            if (book == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(book);
-        }
+        
 
         //Add a new book to the database
         [HttpPost]
@@ -55,7 +43,7 @@ namespace LibraryApi.Controllers
                 _context.Books.Add(book);
                 _context.SaveChanges();
 
-                return CreatedAtAction(nameof(GetBookById), new { id = book.Id }, book);
+                return Ok(new {message = "Book Successfully Created"});
             }
             else
             {
