@@ -16,7 +16,7 @@ Backend (ASP.NET Core Web API)
 - Error handling and model validation
 - CORS enabled to communicate successfully with the frontend
 
-                    -- How to the application --
+                    -- How to run the application --
   Backend
 Prequisities
 - Visual Studio
