@@ -105,58 +105,45 @@ function App() {
 
   return (
     <>
-      <div className='min-h-screen bg-slate-100 flex items-start justify-center py-10 px-4'>
-        <div className='w-full '></div>
-        <div className="App">
-          <h1>Library Management System</h1>
-          {loading && <p>Loading books...</p>}
-          {error && <p className="error">{error}</p>}
-          <ul>
-            {books.map(book => (
-              <li key={book.id}>
-                <p>ID: {book.id}</p>
-                <h2>Title: {book.title}</h2>
-                <p>Author: {book.author}</p>
-                <p>Description: {book.description}</p>
-                <button
-                  onClick={() => {
-                    setEditingId(book.id);
-                    setTitle(book.title);
-                    setAuthor(book.author);
-                    setDescription(book.description);
-                  }}
-                >
-                  Edit
+    <div className='min-h-screen bg-gray-100 p-6'>
+      <div className='max-w-5xl mx-auto bg-white rounded-lg shadow p-6'>
+        <h1 className='text-2xl font-bold text-gray-800 mb-4'> Library Management System </h1>
+        <div className='flex gap-6'>
+          {/* Form Section */}
+          <div className='w-1/3 bg-gray-50 border border-gray-200 rounded-lg p-4'>
+            <h2 className='text-lg font-semibold text-gray-800 mb-3'>
+              {editingId ? "Edit Book" : "Add New Book"}
+            </h2>
+            <form onSubmit={handleSubmit} className='space-y-4'>
+              <input 
+                type="text"
+                placeholder='Title'
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                className='w-full border border-gray-300 rounded p-2 text-sm' />
+
+                <input 
+                type="text"
+                placeholder='Author'
+                value={author}
+                onChange={(e) => setAuthor(e.target.value)}
+                className='w-full border border-gray-300 rounded p-2 text-sm' />
+
+                <textarea
+                  placeholder='Description'
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  className='w-full border border-gray-300 rounded p-2 text-sm' />
+
+                <button type="submit" className='w-full bg-blue-500 text-white rounded p-2 text-sm'>
+                  {editingId ? "Update Book" : "Add Book"}
                 </button>
-                <button onClick={() => handleDeleteBook(book.id)}>Delete</button>
-              </li>
-            ))}
-          </ul>
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              placeholder="Title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-            <input
-              type="text"
-              placeholder="Author"
-              value={author}
-              onChange={(e) => setAuthor(e.target.value)}
-            />
-            <input
-              type="text"
-              placeholder="Description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-            <button type="submit">
-              {editingId === null ? "Add Book" : "Update Book"}
-            </button>
-          </form>
+            </form>
+          </div>
+          {/* Book List Section */}
         </div>
       </div>
+    </div>
     </>
   )
 }
