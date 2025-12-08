@@ -43,7 +43,7 @@ namespace LibraryApi.Controllers
                 _context.Books.Add(book);
                 _context.SaveChanges();
 
-                return Ok(new {message = "Book Successfully Created"});
+                return Ok(book);
             }
             else
             {
