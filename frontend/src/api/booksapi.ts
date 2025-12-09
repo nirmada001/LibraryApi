@@ -14,6 +14,12 @@ export async function getBooks(){
     return response.data;
 }
 
+//get book by id
+export async function getBookById(id: number){
+    const response = await api.get(`/api/books/${id}`);
+    return response.data;
+}
+
 //create book
 export async function createBook(bookData: CreateBookRequest){
     const response = await api.post("/api/books", bookData);

@@ -26,7 +26,21 @@ namespace LibraryApi.Controllers
             return Ok(books);
         }
 
-        
+        //Get book by Id
+        [HttpGet("{id}")]
+        public IActionResult GetBookById(int id)
+        {
+            var book = _context.Books.Find(id);
+
+            if (book == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(book);
+        }
+
+
 
         //Add a new book to the database
         [HttpPost]
