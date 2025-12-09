@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useNavigate } from "react-router-dom";
 import type { Book } from "../types/book";
 import { getBooks, deleteBook } from "../api/booksapi";
@@ -49,7 +49,7 @@ export default function BookListPage() {
                 <h2 className='text-lg font-semibold text-gray-800'>Book List</h2>
                 <div className='space-x-2'>
                     <Link to="/" className='px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700'>Home</Link>
-                    <Link to="" className='px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700'>Add New Book</Link>
+                    <Link to="/add-book" className='px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700'>Add New Book</Link>
                 </div>
             </div>
 
